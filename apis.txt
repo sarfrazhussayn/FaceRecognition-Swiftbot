@@ -1,0 +1,6 @@
+# recongnize
+
+https://ahsansn.pythonanywhere.com/welcome/recognize?picUrl={picture_url_hosted_on_github}
+exaple "https://ik.imagekit.io/demo/img/newPages/dl_SysFHc2jm.png"
+
+# 
