@@ -1,6 +1,12 @@
 # recongnize
-
 https://ahsansn.pythonanywhere.com/welcome/recognize?picUrl={picture_url_hosted_on_github}
-exaple "https://ik.imagekit.io/demo/img/newPages/dl_SysFHc2jm.png"
 
-# 
+example: 
+https://ahsansn.pythonanywhere.com/welcome/recognize?picUrl=https://ik.imagekit.io/demo/img/newPages/dl_SysFHc2jm.png
+
+# train
+https://ahsansn.pythonanywhere.com/welcome/split?vidUrl={video_url_hosted_on_github}&userId={userId}
+
+example:
+http://ahsansn.pythonanywhere.com/welcome/split?vidUrl=https://raw.githubusercontent.com/ahsansn/workspace/master/small.mp4&userId=2908
+
