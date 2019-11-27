@@ -18,7 +18,7 @@ from skimage import io
 import urllib.request
 
 # construct the argument parser and parse the arguments
-img_o= "https://api.anomoz.com/testing/pic.jpg"#"https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+img_o= "https://raw.githubusercontent.com/AhsanSN/Workspace/master/ahsan.jpg"#"https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 img_ = '.\images\mukesh.jpg'
 
 ap = argparse.ArgumentParser()
