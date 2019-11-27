@@ -11,10 +11,18 @@ import imutils
 import pickle
 import cv2
 import os
+from PIL import Image
+import requests
+from io import BytesIO
+from skimage import io
+import urllib.request
 
 # construct the argument parser and parse the arguments
+img_o= "https://api.anomoz.com/testing/pic.jpg"#"https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+img_ = '.\images\mukesh.jpg'
+
 ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", required=True,
+ap.add_argument("-i", "--image", default=img_o,
 	help="path to input image")
 ap.add_argument("-d", "--detector", default='face_detection_model',
 	help="path to OpenCV's deep learning face detector")
@@ -45,7 +53,31 @@ le = pickle.loads(open(args["le"], "rb").read())
 
 # load the image, resize it to have a width of 600 pixels (while
 # maintaining the aspect ratio), and then grab the image dimensions
-image = cv2.imread(args["image"])
+'''
+print(img_o)
+img = Image.open(BytesIO((requests.get(img_o)).content))
+print("--", img_)
+'''
+
+#image = cv2.imread(img)
+
+image = io.imread(img_o)
+
+'''
+with urllib.request.urlopen(img_o) as url:
+	req = url.read()
+
+#req = urllib.urlopen(img_o)
+arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+image = cv2.imdecode(arr, -1)
+'''
+#urllib.request.urlretrieve(img_o, "hello.jpg")
+#print("-here")
+#imaasdsdge = cv2.imread("hello.jpg")
+
+
+#print(image)
+
 image = imutils.resize(image, width=600)
 (h, w) = image.shape[:2]
 
@@ -102,7 +134,7 @@ for i in range(0, detections.shape[2]):
 			(0, 0, 255), 2)
 		cv2.putText(image, text, (startX, y),
 			cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
-
+print(name)
 # show the output image
-cv2.imshow("Image", image)
-cv2.waitKey(0)
+#cv2.imshow("Image", image)
+#cv2.waitKey(0)
