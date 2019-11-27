@@ -14,20 +14,34 @@ import numpy as np
 import os
 import time
 import argparse
+#import urllib.request
 
+vid = r"https://www.techslides.com/demos/sample-videos/small.mp4"
+# "https://raw.githubusercontent.com/ahsansn/workspace/master/small.mp4"
+# r"C:\Users\Ahsan Ahmed\Videos\small.mp4"
+# "https://techslides.com/demos/sample-videos/small.mp4"
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-n", "--name", required = True,
+ap.add_argument("-n", "--name", default="hello",
     help="path to input directory of faces + images")
-ap.add_argument("-v", "--video", required = True,
+ap.add_argument("-v", "--video", default=vid,
     help="path to input directory of faces + images")
 args = vars(ap.parse_args())
 
 
-# Playing video from file:
-FrameSkip = 10 #1 picture per 30 frames 
-cap = cv2.VideoCapture(args["video"])
+#urllib.request.urlretrieve(vid, 'video_name.mp4')
 
+# Playing video from file:
+FrameSkip = 10 #1 picture per 30 frames
+
+cap = cv2.VideoCapture(args["video"])
+while(cap.isOpened()==False):
+    cap = cv2.VideoCapture(args["video"])
+    print(1, cap.isOpened())
+
+    
+print(cap)
+print(cap.isOpened())
 #-----------------------------------------------
 #Creating /directory
 
@@ -43,6 +57,7 @@ path = 'dataset/'+str(args["name"])+"/"
 #Calculations
 fps = cap.get(cv2.CAP_PROP_FPS)      # OpenCV2 (version 2) used "CV_CAP_PROP_FPS"
 frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+print(frame_count,fps)
 duration = frame_count/fps
 #-----------------------------------------------
 
