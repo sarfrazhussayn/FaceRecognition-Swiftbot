@@ -33,14 +33,14 @@ def upload_file():
 		#print(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'], filename))
 		#print(destination)
 		#########################
-		
+		banda=indexe("./UPLOAD_FOLDER/"+str(filename))
 		#Runs Recognizer on the Last Uploaded File
-		#print(indexe("./UPLOAD_FOLDER/"+str(filename)))
+		print(banda)
 		#Will print the Response of Facial Recognition
 		
 		print(filename)
 		
-		resp = jsonify({'message' : 'File successfully uploaded'})
+		resp = jsonify({'message' : banda})
 		resp.status_code = 201
 		return resp
 	else:
